@@ -9,6 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHost
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -46,13 +47,13 @@ fun App() {
             modifier = androidx.compose.ui.Modifier.padding(innerPadding)
         ) {
             composable(Routes.HOME) {
-                Text(text = "Pantalla Home")
+                HomeScreen()
             }
             composable(Routes.PROFILE) {
-                Text(text = "Pantalla Profile")
+                ProfileScreen()
             }
             composable(Routes.HISTORY) {
-                Text(text = "Pantalla historial")
+                HistoryScreen()
             }
         }
     }
