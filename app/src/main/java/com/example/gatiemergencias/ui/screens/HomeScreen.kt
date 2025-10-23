@@ -41,7 +41,7 @@ fun HomeScreen(historyViewModel: HistoryViewModel? = null) {
                     ) {
                         botonGrande(
                             onClick = { historyViewModel?.addItem("Bomberos") },
-                            containerColor = Color(0xFF0077BB),
+                            containerColor = Color(0xFFCE0D0D),
                             contentColor = Color.White
                         )
                         Text(
@@ -56,8 +56,8 @@ fun HomeScreen(historyViewModel: HistoryViewModel? = null) {
                     ) {
                         botonGrande(
                             onClick = { historyViewModel?.addItem("Medica") },
-                            containerColor = Color(0xFFEE7733),
-                            contentColor = Color.Black
+                            containerColor = Color(0xFF2C16CB),
+
                         )
                         Text(
                             text = "Médico",
@@ -71,7 +71,7 @@ fun HomeScreen(historyViewModel: HistoryViewModel? = null) {
                     ) {
                         botonGrande(
                             onClick = { historyViewModel?.addItem("Carabineros") },
-                            containerColor = Color(0xFF9988CC),
+                            containerColor = Color(0xFF007327),
                             contentColor = Color.White
                         )
                         Text(
