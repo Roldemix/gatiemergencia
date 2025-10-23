@@ -10,6 +10,6 @@ class HistoryViewModel : ViewModel() {
 
     fun addItem(label: String? = null) {
         val value = label ?: "Caja ${_items.size + 1}"
-        _items.add(value)
+        _items.add(0,value)
     }
 }
