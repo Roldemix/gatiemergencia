@@ -25,17 +25,17 @@ fun HomeScreen(historyViewModel: HistoryViewModel? = null) {
               )
         {
             botonGrande(
-                onClick = { /* acción aquí */ },
+                onClick = { historyViewModel?.addItem("Bomberos") },
                 containerColor = Color.Red,
                 contentColor = Color.White
             )
             botonGrande(
-                onClick = { /* acción aquí */ },
+                onClick = { historyViewModel?.addItem("Medica") },
                 containerColor = Color.Yellow,
                 contentColor = Color.White
             )
             botonGrande(
-                onClick = { /* acción aquí */ },
+                onClick = { historyViewModel?.addItem("Carabineros") },
                 containerColor = Color.Green,
                 contentColor = Color.White
             )

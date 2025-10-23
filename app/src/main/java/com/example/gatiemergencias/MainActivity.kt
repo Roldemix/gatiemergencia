@@ -19,6 +19,7 @@ import com.example.gatiemergencias.Navigation.BottomNavItem
 import com.example.gatiemergencias.Navigation.Routes
 import com.example.gatiemergencias.ui.screens.HistoryScreen
 import com.example.gatiemergencias.ui.screens.HomeScreen
+import com.example.gatiemergencias.ui.viewmodel.HistoryViewModel
 import com.example.gatiemergencias.ui.screens.ProfileScreen
 import com.example.gatiemergencias.ui.theme.NavigationTheme
 
@@ -40,19 +41,21 @@ fun App() {
     Scaffold(
         bottomBar = { BottomBar(navController, bottomItems) }
     ) { innerPadding ->
+        val historyViewModel: HistoryViewModel = viewModel()
+
         NavHost(
             navController = navController,
             startDestination = Routes.HOME,
             modifier = androidx.compose.ui.Modifier.padding(innerPadding)
         ) {
             composable(Routes.HOME) {
-                HomeScreen()
+                HomeScreen(historyViewModel)
             }
             composable(Routes.PROFILE) {
                 ProfileScreen()
             }
             composable(Routes.HISTORY) {
-                HistoryScreen()
+                HistoryScreen(historyViewModel)
             }
         }
     }

@@ -11,7 +11,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -28,7 +27,7 @@ fun ProfileScreen() {
                 .fillMaxSize()
         ) {
             var name by remember { mutableStateOf("") }
-            var age by remember { mutableStateOf("") }
+            var email by remember { mutableStateOf("") }
 
             OutlinedTextField(
                 value = name,
@@ -40,9 +39,9 @@ fun ProfileScreen() {
             Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
-                value = age,
-                onValueChange = { age = it },
-                label = { Text("edad") },
+                value = email,
+                onValueChange = { email = it },
+                label = { Text("Email") },
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -50,11 +49,11 @@ fun ProfileScreen() {
 
             Button(
                 onClick = {
-                    // Ejemplo: manejar guardado o pasar a ViewModel
+                    // nada
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("Guardar")
+                Text("Iniciar sesion")
             }
         }
     }
