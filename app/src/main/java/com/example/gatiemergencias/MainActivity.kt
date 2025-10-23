@@ -52,7 +52,7 @@ fun App() {
                 HomeScreen(historyViewModel)
             }
             composable(Routes.PROFILE) {
-                ProfileScreen()
+                ProfileScreen(navController)
             }
             composable(Routes.HISTORY) {
                 HistoryScreen(historyViewModel)
