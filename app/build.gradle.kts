@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     kotlin("plugin.serialization") version "2.0.21"
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -41,6 +42,12 @@ android {
 }
 
 dependencies {
+
+    implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
+
+    implementation("com.google.firebase:firebase-analytics")
+
+
     val nav_version = "2.9.4"
 
     // Jetpack Compose integration

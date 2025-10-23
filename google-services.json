@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "106429568677",
+    "project_id": "gatiemergencias",
+    "storage_bucket": "gatiemergencias.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106429568677:android:ad8ab90d63d56191c41f4c",
+        "android_client_info": {
+          "package_name": "com.gati.Emergencias"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM8MUuhwTpxLtSs8K2WaaCPnbsMJeiouY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
