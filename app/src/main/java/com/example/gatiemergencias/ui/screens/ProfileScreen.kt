@@ -41,20 +41,22 @@ fun ProfileScreen(navController: NavHostController) {
             var email by remember { mutableStateOf("") }
 
             OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
-                label = { Text("nombre") },
+                value = email,
+                onValueChange = { email = it },
+                label = { Text("Email") },
                 modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text("Email") },
+                value = name,
+                onValueChange = { name = it },
+                label = { Text("Contrasena") },
                 modifier = Modifier.fillMaxWidth()
             )
+
+
 
             Spacer(modifier = Modifier.height(8.dp))
 
