@@ -18,6 +18,9 @@ import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.Navigator
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthEmailException
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -70,11 +73,16 @@ fun ProfileScreen(navController: NavHostController) {
                     auth.signInWithEmailAndPassword(email, name)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                Toast.makeText(context, "bienvenido", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "inicio de sesion exitoso", Toast.LENGTH_SHORT).show()
                                 navController.navigate("home")
                             } else {
-                                val message = task.exception?.message ?: "ERROR DESCONOCIDO"
-                                Toast.makeText(context, "ERROR: $message", Toast.LENGTH_SHORT).show()
+                                val errormessage = when (task.exception) {
+                                   is FirebaseAuthInvalidCredentialsException -> "correo o contraseña incorrectos"
+                                    is FirebaseAuthInvalidUserException -> "no existe una cuenta con este correo"
+                                    is FirebaseAuthEmailException -> "el formato del correo no es valido"
+                                    else -> "error al inicir sesion. intentelo de nuevo"
+                                }
+                                Toast.makeText(context, errormessage, Toast.LENGTH_SHORT).show()
                             }
                         }
                 },
