@@ -40,7 +40,7 @@ fun ProfileScreen(navController: NavHostController) {
             val auth = FirebaseAuth.getInstance()
             val snackHostState = remember { SnackbarHostState() }
 
-            var name by remember { mutableStateOf("") }
+            var contrasena by remember { mutableStateOf("") }
             var email by remember { mutableStateOf("") }
 
             OutlinedTextField(
@@ -53,8 +53,8 @@ fun ProfileScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
+                value = contrasena,
+                onValueChange = { contrasena = it },
                 label = { Text("Contrasena") },
                 modifier = Modifier.fillMaxWidth()
             )
@@ -70,7 +70,7 @@ fun ProfileScreen(navController: NavHostController) {
                         return@Button
                     }
 
-                    auth.signInWithEmailAndPassword(email, name)
+                    auth.signInWithEmailAndPassword(email, contrasena)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 Toast.makeText(context, "inicio de sesion exitoso", Toast.LENGTH_SHORT).show()

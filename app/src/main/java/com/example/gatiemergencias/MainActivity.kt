@@ -23,6 +23,7 @@ import com.example.gatiemergencias.ui.viewmodel.HistoryViewModel
 import com.example.gatiemergencias.ui.screens.ProfileScreen
 import com.example.gatiemergencias.ui.theme.NavigationTheme
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
