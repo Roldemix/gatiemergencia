@@ -120,10 +120,10 @@ fun registroHome(navController: NavHostController) {
                     db.collection("users")
                         .add(user)
                         .addOnSuccessListener { documentReference ->
-                            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                            Log.d(TAG, "Documentos añadidos con el id: ${documentReference.id}")
                         }
                         .addOnFailureListener { e ->
-                            Log.w(TAG, "Error adding document", e)
+                            Log.w(TAG, "Error al añadir documentos", e)
                         }
                 },
                 modifier = Modifier.fillMaxWidth()
