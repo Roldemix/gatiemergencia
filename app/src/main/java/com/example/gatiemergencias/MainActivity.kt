@@ -21,6 +21,8 @@ import com.example.gatiemergencias.ui.screens.HistoryScreen
 import com.example.gatiemergencias.ui.screens.HomeScreen
 import com.example.gatiemergencias.ui.viewmodel.HistoryViewModel
 import com.example.gatiemergencias.ui.screens.ProfileScreen
+import com.example.gatiemergencias.ui.screens.perfilscreen
+import com.example.gatiemergencias.ui.screens.registroHome
 import com.example.gatiemergencias.ui.theme.NavigationTheme
 
 
@@ -57,6 +59,12 @@ fun App() {
             }
             composable(Routes.HISTORY) {
                 HistoryScreen(historyViewModel)
+            }
+            composable(Routes.sign_in) {
+                registroHome(navController)
+            }
+            composable(Routes.select) {
+               perfilscreen(navController)
             }
         }
     }

@@ -125,6 +125,7 @@ fun registroHome(navController: NavHostController) {
                         .addOnFailureListener { e ->
                             Log.w(TAG, "Error al añadir documentos", e)
                         }
+                    navController.navigate("home")
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
