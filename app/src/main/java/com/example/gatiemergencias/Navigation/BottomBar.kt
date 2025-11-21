@@ -15,7 +15,7 @@ import androidx.navigation.compose.*
 
 sealed class BottomNavItem(val route: String, val label: String, val icon: androidx.compose.ui.graphics.vector.ImageVector) {
     object Home : BottomNavItem(Routes.HOME, "Home", Icons.Default.Home)
-    object Profile : BottomNavItem(Routes.select, "Perfil", Icons.Default.Person)
+    object Profile : BottomNavItem(Routes.PROFILE, "Perfil", Icons.Default.Person)
 
     object History : BottomNavItem(Routes.HISTORY, "Historial", Icons.Default.Person)
 }

@@ -107,23 +107,28 @@ fun registroHome(navController: NavHostController) {
             Button(
                 onClick = {
                     // Create a new user with a first and last name
-                    val user = hashMapOf(
-                        "name" to name,
-                        "Lastname" to Lastname,
-                        "edad" to edad,
-                        "contrasenia" to contrasenia,
-                        "descripcion" to descripcion,
-                        "email" to email,
-                    )
-
-// Add a new document with a generated ID
-                    db.collection("users")
-                        .add(user)
-                        .addOnSuccessListener { documentReference ->
-                            Log.d(TAG, "Documentos añadidos con el id: ${documentReference.id}")
-                        }
-                        .addOnFailureListener { e ->
-                            Log.w(TAG, "Error al añadir documentos", e)
+                    auth.createUserWithEmailAndPassword(email, contrasenia)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val uid = auth.currentUser!!.uid
+                                val profile = mapOf(
+                                    "name" to name,
+                                    "Lastname" to Lastname,
+                                    "edad" to edad,
+                                    "descripcion" to descripcion,
+                                    "email" to email,
+                                    "createdAt" to com.google.firebase.firestore.FieldValue.serverTimestamp()
+                                )
+                                Toast.makeText(context, "Cuenta creada con exito", Toast.LENGTH_LONG).show()
+                                db.collection("users").document(uid).set(profile)
+                                    .addOnSuccessListener {
+                                        Log.d(TAG, "Perfil creado para uid=$uid")
+                                        navController.navigate("home")
+                                    }
+                                    .addOnFailureListener { e -> Log.w(TAG, "Error al guardar perfil", e) }
+                            } else {
+                                Toast.makeText(context, "Error: ${task.exception?.localizedMessage}", Toast.LENGTH_LONG).show()
+                            }
                         }
                     navController.navigate("home")
                 },
