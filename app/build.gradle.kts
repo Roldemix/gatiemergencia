@@ -50,7 +50,6 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
 
     implementation("com.google.firebase:firebase-analytics")
-    implementation(libs.androidx.compose.foundation)
     //fin firebase
 
     val nav_version = "2.9.4"
