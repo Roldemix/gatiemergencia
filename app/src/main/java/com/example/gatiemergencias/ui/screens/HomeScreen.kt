@@ -5,6 +5,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
 
 import androidx.compose.ui.Modifier
@@ -13,12 +15,27 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.gatiemergencias.Navigation.botonGrande
+import com.example.gatiemergencias.R
+import com.example.gatiemergencias.sound.SoundManager
 import com.example.gatiemergencias.ui.viewmodel.HistoryViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(historyViewModel: HistoryViewModel? = null) {
     val vm = historyViewModel ?: viewModel<HistoryViewModel>()
+    val context = LocalContext.current
+    LaunchedEffect(Unit) {
+        try {
+            SoundManager.init(context)
+            // Preload the ambulance sound so play() works immediately on click
+            SoundManager.loadFromRes(context, R.raw.ambu)
+            // Preload police and fire sounds
+            SoundManager.loadFromRes(context, R.raw.poli)
+            SoundManager.loadFromRes(context, R.raw.bombe)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
     Scaffold(
         topBar = { TopAppBar(title = { Text("Principal") }) }
     ) { padding ->
@@ -40,7 +57,10 @@ fun HomeScreen(historyViewModel: HistoryViewModel? = null) {
                         verticalArrangement = Arrangement.Center
                     ) {
                         botonGrande(
-                            onClick = { historyViewModel?.addItem("Bomberos") },
+                            onClick = {
+                                historyViewModel?.addItem("Bomberos")
+                                SoundManager.play(R.raw.bombe)
+                            },
                             containerColor = Color(0xFFCE0D0D),
                             contentColor = Color.White
                         )
@@ -55,7 +75,9 @@ fun HomeScreen(historyViewModel: HistoryViewModel? = null) {
                         verticalArrangement = Arrangement.Center
                     ) {
                         botonGrande(
-                            onClick = { historyViewModel?.addItem("Medica") },
+                            onClick = { historyViewModel?.addItem("Medica")
+                                SoundManager.play(R.raw.ambu)
+                                      },
                             containerColor = Color(0xFF2C16CB),
 
                         )
@@ -70,7 +92,10 @@ fun HomeScreen(historyViewModel: HistoryViewModel? = null) {
                         verticalArrangement = Arrangement.Center
                     ) {
                         botonGrande(
-                            onClick = { historyViewModel?.addItem("Carabineros") },
+                            onClick = {
+                                historyViewModel?.addItem("Carabineros")
+                                SoundManager.play(R.raw.poli)
+                            },
                             containerColor = Color(0xFF007327),
                             contentColor = Color.White
                         )
